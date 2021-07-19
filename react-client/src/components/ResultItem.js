@@ -36,8 +36,12 @@ const useStyles = makeStyles((theme) => ({
   h: {
     fontWeight: "bold",
   },
-  fav: {
+  favChecked: {
     color: purple[600],
+    marginLeft: "8px",
+  },
+  favIcon: {
+    marginLeft: "8px",
   },
   clear: {
     clear: "both",
@@ -67,8 +71,8 @@ function ResultItem(props) {
         <FormControlLabel
           control={
             <Checkbox
-              icon={<FavoriteBorder />}
-              checkedIcon={<Favorite className={classes.fav} />}
+              icon={<FavoriteBorder className={classes.favIcon} />}
+              checkedIcon={<Favorite className={classes.favChecked} />}
               name="checkedH"
               checked={props.fav}
               onChange={handleFavoriteChange}
@@ -80,8 +84,8 @@ function ResultItem(props) {
             pathname: `/cars/${props.car.id}`,
             initialDates: {
               from: search.fromDate,
-              to: search.toDate
-            }
+              to: search.toDate,
+            },
           }}
           className={classes.link}
         >
