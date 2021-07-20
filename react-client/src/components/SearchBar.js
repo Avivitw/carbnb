@@ -3,19 +3,21 @@ import { searchContext } from "../providers/SearchProvider";
 
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import {
+  makeStyles,
+  InputLabel,
+  FormControl,
+  FormControlLabel,
+  MenuItem,
+  Select,
+  Button,
+  Checkbox,
+} from "@material-ui/core";
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
-import Button from "@material-ui/core/Button";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -26,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
   },
   searchBox: {
-    backgroundColor: "lightgrey",
+    backgroundColor: "white",
     padding: "25px",
     borderRadius: "4px",
     boxShadow: theme.shadows[5],
@@ -41,8 +43,8 @@ const useStyles = makeStyles((theme) => ({
     font: "Trebuchet MS",
     fontSize: theme.typography.pxToRem(20),
     fontWeight: "bold",
-    color: "white"
-  }
+    color: "white",
+  },
 }));
 
 function SearchBar(props) {
@@ -78,12 +80,12 @@ function SearchBar(props) {
   };
 
   return (
-    <Container className={classes.searchBox} maxWidth="sm" >
+    <Container className={classes.searchBox} maxWidth="sm">
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <FormControl fullWidth={true}>
-              <InputLabel id="demo-simple-select-label" >Location</InputLabel>
+              <InputLabel id="demo-simple-select-label">Location</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -97,7 +99,8 @@ function SearchBar(props) {
             </FormControl>
           </Grid>
           <Grid item xs={6}>
-            <KeyboardDatePicker className={classes.input}
+            <KeyboardDatePicker
+              className={classes.input}
               disableToolbar
               variant="inline"
               format="dd/MM/yyyy"
@@ -113,7 +116,8 @@ function SearchBar(props) {
             />
           </Grid>
           <Grid item xs={6}>
-            <KeyboardDatePicker className={classes.input}
+            <KeyboardDatePicker
+              className={classes.input}
               disableToolbar
               variant="inline"
               format="dd/MM/yyyy"
@@ -132,7 +136,7 @@ function SearchBar(props) {
             <Button
               className={classes.Submit}
               variant="contained"
-              color="secondary"
+              color="primary"
               fullWidth={true}
               onClick={handleSearchClick}
             >
@@ -142,7 +146,7 @@ function SearchBar(props) {
 
           {search.location !== "" && (
             <Fragment className={classes.chekbox}>
-              <Grid item xs={4} >
+              <Grid item xs={4}>
                 <FormControlLabel
                   control={
                     <Checkbox
@@ -155,7 +159,7 @@ function SearchBar(props) {
                   label="Pet Friendly"
                 />
               </Grid>
-              <Grid item xs={4} >
+              <Grid item xs={4}>
                 <FormControlLabel
                   control={
                     <Checkbox
@@ -168,7 +172,7 @@ function SearchBar(props) {
                   label="RV's Only"
                 />
               </Grid>
-              <Grid item xs={4} >
+              <Grid item xs={4}>
                 <FormControlLabel
                   control={
                     <Checkbox

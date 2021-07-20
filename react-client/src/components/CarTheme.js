@@ -1,5 +1,6 @@
 import { createTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
+import { blue } from "@material-ui/core/colors";
 
 const theme = createTheme({
   breakpoints: {
@@ -9,16 +10,16 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: "#ffffff",
+      main: blue[300],
     },
     secondary: {
-      main: "#80deea",
+      main: "#11cb5f",
     },
     palette: {
       background: {
         default: "#ffffff",
-      }
-    }
+      },
+    },
   },
 });
 
