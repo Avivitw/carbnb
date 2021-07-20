@@ -51,55 +51,57 @@ function PopularLocations(props) {
 
   return (
     <div>
-      <Container className={classes.popularLocations} maxWidth="sm">
+      <Container className={classes.popularLocations}>
         <div className={classes.h}>Popular Locations</div>
-        <Grid container spacing={3}>
-          <Grid
-            item
-            xs={2}
-            align="center"
-            onClick={() => {
-              setLocation("Vancouver");
-            }}
-          >
-            <Avatar alt="Vancouver" src={vanc} className={classes.large} />
-            <div className="place-name">Vancouver</div>
+        <Container className={classes.popularLocations} maxWidth="sm">
+          <Grid container spacing={3}>
+            <Grid
+              item
+              xs={2}
+              align="center"
+              onClick={() => {
+                setLocation("Vancouver");
+              }}
+            >
+              <Avatar alt="Vancouver" src={vanc} className={classes.large} />
+              <div className="place-name">Vancouver</div>
+            </Grid>
+            <Grid
+              item
+              xs={2}
+              align="center"
+              onClick={() => {
+                setLocation("Calgary");
+              }}
+            >
+              <Avatar alt="Calgary" src={cal} className={classes.large} />
+              <div className="place-name">Calgary</div>
+            </Grid>
+            <Grid
+              item
+              xs={2}
+              align="center"
+              onClick={() => {
+                setLocation("Toronto");
+              }}
+            >
+              <Avatar alt="Toronto" src={torn} className={classes.large} />
+              <div className="place-name">Toronto</div>
+            </Grid>
+            <Grid item xs={2} align="center">
+              <Avatar alt="Victoria" src={vic} className={classes.large} />
+              <div className="place-name">Victoria</div>
+            </Grid>
+            <Grid item xs={2} align="center">
+              <Avatar alt="Edmonton" src={edm} className={classes.large} />
+              <div className="place-name">Edmonton</div>
+            </Grid>
+            <Grid item xs={2} align="center">
+              <Avatar alt="Saskatoon" src={sas} className={classes.large} />
+              <div className="place-name">Saskatoon</div>
+            </Grid>
           </Grid>
-          <Grid
-            item
-            xs={2}
-            align="center"
-            onClick={() => {
-              setLocation("Calgary");
-            }}
-          >
-            <Avatar alt="Calgary" src={cal} className={classes.large} />
-            <div className="place-name">Calgary</div>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-            align="center"
-            onClick={() => {
-              setLocation("Toronto");
-            }}
-          >
-            <Avatar alt="Toronto" src={torn} className={classes.large} />
-            <div className="place-name">Toronto</div>
-          </Grid>
-          <Grid item xs={2} align="center">
-            <Avatar alt="Victoria" src={vic} className={classes.large} />
-            <div className="place-name">Victoria</div>
-          </Grid>
-          <Grid item xs={2} align="center">
-            <Avatar alt="Edmonton" src={edm} className={classes.large} />
-            <div className="place-name">Edmonton</div>
-          </Grid>
-          <Grid item xs={2} align="center">
-            <Avatar alt="Saskatoon" src={sas} className={classes.large} />
-            <div className="place-name">Saskatoon</div>
-          </Grid>
-        </Grid>
+        </Container>
       </Container>
     </div>
   );

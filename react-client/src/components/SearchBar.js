@@ -1,18 +1,19 @@
 import { useState, useEffect, Fragment, useContext } from "react";
 import { searchContext } from "../providers/SearchProvider";
 
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
 import {
   makeStyles,
   InputLabel,
   FormControl,
   FormControlLabel,
-  MenuItem,
   Select,
   Button,
   Checkbox,
+  Grid,
 } from "@material-ui/core";
+import MenuItem from "@material-ui/core/MenuItem";
+import Container from "@material-ui/core/Container";
+
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
@@ -44,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: theme.typography.pxToRem(20),
     fontWeight: "bold",
     color: "white",
+    backgroundColor: "#64b5f6",
   },
 }));
 
@@ -136,7 +138,6 @@ function SearchBar(props) {
             <Button
               className={classes.Submit}
               variant="contained"
-              color="primary"
               fullWidth={true}
               onClick={handleSearchClick}
             >

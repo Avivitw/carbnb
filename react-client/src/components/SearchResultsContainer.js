@@ -13,7 +13,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 const useStyles = makeStyles((theme) => ({
   searchBox: {
     padding: "0",
-    marginTop: '175px',
+    marginTop: "175px",
   },
   formControl: {
     marginBottom: theme.spacing(1),
@@ -42,7 +42,10 @@ function SearchResultsContainer(props) {
   };
 
   const sortedCarsRows = useMemo(() => {
-    let carRows = [...cars.rows];
+    let carRows = cars.rows.map((car) => {
+      return { ...car, priceN: 1 * car.price.slice(1) /* convert to number */ };
+    });
+
     carRows = carRows
       .filter((car) => {
         if (filters.pets && !car.pet_friendly) {
@@ -56,7 +59,7 @@ function SearchResultsContainer(props) {
         }
         return true;
       })
-      .sort((a, b) => (a.price - b.price) * sortBy);
+      .sort((a, b) => (a.priceN - b.priceN) * sortBy);
     return carRows;
   }, [sortBy, cars.rows, filters]);
 
