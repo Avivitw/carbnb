@@ -93,7 +93,6 @@ export default function SearchProvider(props) {
 
   //////////////////// Favourites //////////////
   const [favourites, setFavourites] = useState([]);
-  // const TEMP_USER_ID = 1; // TODO: replace to user.id
 
   useEffect(() => {
     if (user && user.id) {
