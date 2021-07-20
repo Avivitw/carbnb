@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
   popularLocations: {
     padding: "0px",
     backgroundColor: "#FFFFFF",
-
   },
   h: {
     font: "Trebuchet MS",
@@ -41,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     fontSize: theme.typography.pxToRem(26),
     color: theme.palette.action.active,
-    paddingTop: 0,
+    paddingTop: "20px",
   },
 }));
 

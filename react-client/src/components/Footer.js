@@ -74,7 +74,7 @@ function Footer() {
           </div>
           <div className={classes.fixSpans}>
             <EmailIcon fontSize="small"></EmailIcon>
-            <span> Contact@carbnb.ca</span>
+            <span> Contact@sharemyride.ca</span>
           </div>
           <div className={classes.fixSpans}>
             <PhoneIcon fontSize="small"></PhoneIcon>
@@ -83,7 +83,7 @@ function Footer() {
         </Grid>
         <Grid item xs={4} className={classes.column}>
           <div className={classes.h}>About Us</div>
-          <div>How Carbnb works</div>
+          <div>How Share My Ride works</div>
           <div>Careers</div>
           <div>Investors</div>
         </Grid>
