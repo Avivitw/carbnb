@@ -1,7 +1,7 @@
-import { useContext, useState } from 'react';
-import axios from 'axios';
-import { makeStyles } from '@material-ui/core/styles';
-import MuiAlert from '@material-ui/lab/Alert';
+import { useContext, useState } from "react";
+import axios from "axios";
+import { makeStyles } from "@material-ui/core/styles";
+import MuiAlert from "@material-ui/lab/Alert";
 import {
   Button,
   Dialog,
@@ -15,16 +15,17 @@ import {
   DialogContentText,
   TextField,
   Snackbar,
-  MenuItem,
   FormControl,
   Checkbox,
   Grid,
   Select,
   Container,
-  InputLabel
+  InputLabel,
 } from "@material-ui/core";
+import MenuItem from "@material-ui/core/MenuItem";
+
 // select
-import { authContext } from '../../providers/authProvider';
+import { authContext } from "../../providers/authProvider";
 
 const useStyles = makeStyles((theme) => ({
   avail: {
@@ -45,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
   select: {
     marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1)
+    marginBottom: theme.spacing(1),
   },
   trans: {
     marginTop: theme.spacing(2),
@@ -63,38 +64,38 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const colours = [
-  'Beige',
-  'Black',
-  'Blue',
-  'Brown',
-  'Green',
-  'Grey',
-  'Orange',
-  'Purple',
-  'Red',
-  'Silver',
-  'White',
-  'Yellow',
+  "Beige",
+  "Black",
+  "Blue",
+  "Brown",
+  "Green",
+  "Grey",
+  "Orange",
+  "Purple",
+  "Red",
+  "Silver",
+  "White",
+  "Yellow",
 ];
 
-const fuels = ['Petrol', 'Diesel', 'Hybrid', 'Electric', 'Other'];
+const fuels = ["Petrol", "Diesel", "Hybrid", "Electric", "Other"];
 
 const AddVehicle = (props) => {
   const { open, close, locations, vehiclesUpdated } = props;
   const classes = useStyles();
   const { auth, user } = useContext(authContext);
 
-  const [errorMessage, setErrorMessage] = useState('');
-  const [make, setMake] = useState('');
-  const [model, setModel] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
+  const [make, setMake] = useState("");
+  const [model, setModel] = useState("");
   const [modelYear, setModelYear] = useState(new Date().getFullYear());
-  const [doors, setDoors] = useState('');  // might need to change this
-  const [colour, setColour] = useState('');
-  const [fuel, setFuel] = useState('');
+  const [doors, setDoors] = useState(""); // might need to change this
+  const [colour, setColour] = useState("");
+  const [fuel, setFuel] = useState("");
   const [seats, setSeats] = useState(2);
-  const [transmission, setTransmission] = useState('');
-  const [description, setDescription] = useState('');
-  const [image, setImage] = useState('');
+  const [transmission, setTransmission] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
   const [checkState, setCheckState] = useState({
     sport: false,
     luxury: false,
@@ -105,21 +106,32 @@ const AddVehicle = (props) => {
     suv: false,
     convertible: false,
     economy: false,
-    petFriendly: false
+    petFriendly: false,
   });
   const [snackOpen, setSnackOpen] = useState(false);
-  const [locationField, setLocationField] = useState('');
+  const [locationField, setLocationField] = useState("");
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     // User should not be able to get to this point
     if (!auth) {
-      setErrorMessage('You must be logged in to register a vehicle');
+      setErrorMessage("You must be logged in to register a vehicle");
       return;
     }
 
-    const { petFriendly, sport, truck, van, miniVan, luxury, rv, suv, convertible, economy } = checkState;
+    const {
+      petFriendly,
+      sport,
+      truck,
+      van,
+      miniVan,
+      luxury,
+      rv,
+      suv,
+      convertible,
+      economy,
+    } = checkState;
 
     const content = {
       userId: user.id,
@@ -147,7 +159,7 @@ const AddVehicle = (props) => {
     };
 
     try {
-      const response = await axios.post('/api/cars', content);
+      const response = await axios.post("/api/cars", content);
 
       // Update car state in parent with newly created car
       vehiclesUpdated(response.data);
@@ -156,22 +168,22 @@ const AddVehicle = (props) => {
       setSnackOpen(true);
       handleClose();
     } catch (err) {
-      console.log('Error registering new car', err);
+      console.log("Error registering new car", err);
     }
   };
 
   const handleClose = () => {
     // Set form fields to default values;
-    setMake('');
-    setModel('');
+    setMake("");
+    setModel("");
     setModelYear(new Date().getFullYear());
-    setDoors('');
-    setColour('');
-    setFuel('');
-    setSeats('');
-    setTransmission('');
-    setDescription('');
-    setImage('');
+    setDoors("");
+    setColour("");
+    setFuel("");
+    setSeats("");
+    setTransmission("");
+    setDescription("");
+    setImage("");
     setCheckState({
       sport: false,
       luxury: false,
@@ -182,19 +194,19 @@ const AddVehicle = (props) => {
       suv: false,
       convertible: false,
       economy: false,
-      petFriendly: false
+      petFriendly: false,
     });
 
     // Close the dialog
     close(false);
   };
 
-  const handleCheckChange = event => {
+  const handleCheckChange = (event) => {
     setCheckState({ ...checkState, [event.target.name]: event.target.checked });
   };
 
   const handleCloseSnack = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
     setSnackOpen(false);
@@ -209,10 +221,14 @@ const AddVehicle = (props) => {
         aria-labelledby="login-dialog"
       >
         <Container className={classes.avail} maxWidth="sm">
-          <DialogTitle id="login-dialog" className={classes.title}>Register Vehicle</DialogTitle>
+          <DialogTitle id="login-dialog" className={classes.title}>
+            Register Vehicle
+          </DialogTitle>
           <Grid container spacing={3}>
             <form id="register-vehicle-form" onSubmit={handleSubmit}>
-              {errorMessage && <DialogContentText>{errorMessage}</DialogContentText>}
+              {errorMessage && (
+                <DialogContentText>{errorMessage}</DialogContentText>
+              )}
               <Grid item xs={8}>
                 <FormControl fullWidth={true}>
                   <InputLabel id="demo-simple-select-label">
@@ -226,7 +242,7 @@ const AddVehicle = (props) => {
                     id="rvehicle-location"
                     label="Location"
                     value={locationField}
-                    onChange={event => setLocationField(event.target.value)}
+                    onChange={(event) => setLocationField(event.target.value)}
                     required
                   >
                     {locations.map((loc) => (
@@ -246,7 +262,7 @@ const AddVehicle = (props) => {
                   label="Make"
                   type="text"
                   value={make}
-                  onChange={event => setMake(event.target.value)}
+                  onChange={(event) => setMake(event.target.value)}
                   fullWidth={true}
                   required
                 />
@@ -260,7 +276,7 @@ const AddVehicle = (props) => {
                   label="Model"
                   type="text"
                   value={model}
-                  onChange={event => setModel(event.target.value)}
+                  onChange={(event) => setModel(event.target.value)}
                   fullWidth={true}
                   required
                 />
@@ -273,9 +289,13 @@ const AddVehicle = (props) => {
                   id="rvehicle-seats"
                   label="Model Year"
                   type="number"
-                  inputProps={{ min: 1900, max: (new Date().getFullYear() + 1), step: 1 }}
+                  inputProps={{
+                    min: 1900,
+                    max: new Date().getFullYear() + 1,
+                    step: 1,
+                  }}
                   value={modelYear}
-                  onChange={event => setModelYear(event.target.value)}
+                  onChange={(event) => setModelYear(event.target.value)}
                   fullWidth={true}
                   required
                 />
@@ -290,7 +310,7 @@ const AddVehicle = (props) => {
                   type="number"
                   inputProps={{ min: 1, step: 1 }}
                   value={seats}
-                  onChange={event => setSeats(event.target.value)}
+                  onChange={(event) => setSeats(event.target.value)}
                   fullWidth={true}
                   required
                 />
@@ -309,7 +329,7 @@ const AddVehicle = (props) => {
                     id="rvehicle-doors"
                     label="Number of Doors"
                     value={doors}
-                    onChange={event => setDoors(event.target.value)}
+                    onChange={(event) => setDoors(event.target.value)}
                     fullWidth={true}
                     required
                   >
@@ -321,7 +341,6 @@ const AddVehicle = (props) => {
                   </Select>
                 </FormControl>
               </Grid>
-
 
               <Grid item xs={4}>
                 <FormControl fullWidth={true}>
@@ -336,7 +355,7 @@ const AddVehicle = (props) => {
                     id="rvehicle-colours"
                     label="Select Colour"
                     value={colour}
-                    onChange={event => setColour(event.target.value)}
+                    onChange={(event) => setColour(event.target.value)}
                     fullWidth={true}
                     required
                   >
@@ -362,7 +381,7 @@ const AddVehicle = (props) => {
                     id="rvehicle-fuel"
                     label="Select Fuel Type"
                     value={fuel}
-                    onChange={event => setFuel(event.target.value)}
+                    onChange={(event) => setFuel(event.target.value)}
                     fullWidth={true}
                     required
                   >
@@ -376,18 +395,34 @@ const AddVehicle = (props) => {
               </Grid>
 
               <Grid item xs={12}>
-                <FormControl component="fieldset" fullWidth={true} className={classes.trans}>
+                <FormControl
+                  component="fieldset"
+                  fullWidth={true}
+                  className={classes.trans}
+                >
                   <FormLabel component="legend">Transmission</FormLabel>
                   <RadioGroup
                     aria-label="transmission type"
                     name="vtransmission"
                     value={transmission}
-                    onChange={event => setTransmission(event.target.value)}
+                    onChange={(event) => setTransmission(event.target.value)}
                     row
                   >
-                    <FormControlLabel value="automatic" control={<Radio />} label="Automatic" />
-                    <FormControlLabel value="manual" control={<Radio />} label="Manual" />
-                    <FormControlLabel value="dct" control={<Radio />} label="Dual Clutch" />
+                    <FormControlLabel
+                      value="automatic"
+                      control={<Radio />}
+                      label="Automatic"
+                    />
+                    <FormControlLabel
+                      value="manual"
+                      control={<Radio />}
+                      label="Manual"
+                    />
+                    <FormControlLabel
+                      value="dct"
+                      control={<Radio />}
+                      label="Dual Clutch"
+                    />
                   </RadioGroup>
                 </FormControl>
               </Grid>
@@ -395,73 +430,132 @@ const AddVehicle = (props) => {
               <FormControl fullWidth={true} className={classes.trans}>
                 <FormLabel component="legend">Vehicle Information</FormLabel>
                 <FormGroup row>
-
                   <Grid item xs={2}>
                     <FormControlLabel
-                      control={<Checkbox checked={checkState.sport} onChange={handleCheckChange} name="sport" />}
+                      control={
+                        <Checkbox
+                          checked={checkState.sport}
+                          onChange={handleCheckChange}
+                          name="sport"
+                        />
+                      }
                       label="Sport"
                     />
                   </Grid>
 
                   <Grid item xs={2}>
                     <FormControlLabel
-                      control={<Checkbox checked={checkState.luxury} onChange={handleCheckChange} name="luxury" />}
+                      control={
+                        <Checkbox
+                          checked={checkState.luxury}
+                          onChange={handleCheckChange}
+                          name="luxury"
+                        />
+                      }
                       label="Luxury"
                     />
                   </Grid>
 
                   <Grid item xs={2}>
                     <FormControlLabel
-                      control={<Checkbox checked={checkState.economy} onChange={handleCheckChange} name="economy" />}
+                      control={
+                        <Checkbox
+                          checked={checkState.economy}
+                          onChange={handleCheckChange}
+                          name="economy"
+                        />
+                      }
                       label="Economy"
                     />
                   </Grid>
 
                   <Grid item xs={3}>
                     <FormControlLabel
-                      control={<Checkbox checked={checkState.truck} onChange={handleCheckChange} name="truck" />}
+                      control={
+                        <Checkbox
+                          checked={checkState.truck}
+                          onChange={handleCheckChange}
+                          name="truck"
+                        />
+                      }
                       label="Truck"
                     />
                   </Grid>
 
                   <Grid item xs={3}>
                     <FormControlLabel
-                      control={<Checkbox checked={checkState.van} onChange={handleCheckChange} name="van" />}
+                      control={
+                        <Checkbox
+                          checked={checkState.van}
+                          onChange={handleCheckChange}
+                          name="van"
+                        />
+                      }
                       label="Van"
                     />
                   </Grid>
 
                   <Grid item xs={2}>
                     <FormControlLabel
-                      control={<Checkbox checked={checkState.miniVan} onChange={handleCheckChange} name="miniVan" />}
+                      control={
+                        <Checkbox
+                          checked={checkState.miniVan}
+                          onChange={handleCheckChange}
+                          name="miniVan"
+                        />
+                      }
                       label="Mini Van"
                     />
                   </Grid>
 
                   <Grid item xs={2}>
                     <FormControlLabel
-                      control={<Checkbox checked={checkState.rv} onChange={handleCheckChange} name="rv" />}
+                      control={
+                        <Checkbox
+                          checked={checkState.rv}
+                          onChange={handleCheckChange}
+                          name="rv"
+                        />
+                      }
                       label="RV"
                     />
                   </Grid>
 
                   <Grid item xs={2}>
                     <FormControlLabel
-                      control={<Checkbox checked={checkState.suv} onChange={handleCheckChange} name="suv" />}
+                      control={
+                        <Checkbox
+                          checked={checkState.suv}
+                          onChange={handleCheckChange}
+                          name="suv"
+                        />
+                      }
                       label="SUV"
                     />
                   </Grid>
 
                   <Grid item xs={3}>
                     <FormControlLabel
-                      control={<Checkbox checked={checkState.convertible} onChange={handleCheckChange} name="convertible" />}
+                      control={
+                        <Checkbox
+                          checked={checkState.convertible}
+                          onChange={handleCheckChange}
+                          name="convertible"
+                        />
+                      }
                       label="Convertible"
                     />
                   </Grid>
 
                   <Grid item xs={3}>
                     <FormControlLabel
-                      control={<Checkbox checked={checkState.petFriendly} onChange={handleCheckChange} name="petFriendly" />}
+                      control={
+                        <Checkbox
+                          checked={checkState.petFriendly}
+                          onChange={handleCheckChange}
+                          name="petFriendly"
+                        />
+                      }
                       label="Pet Friendly"
                     />
                   </Grid>
@@ -474,7 +568,7 @@ const AddVehicle = (props) => {
                   label="Description"
                   inputProps={{ minLength: 10 }}
                   value={description}
-                  onChange={event => setDescription(event.target.value)}
+                  onChange={(event) => setDescription(event.target.value)}
                   multiline
                   rows={3}
                   fullWidth={true}
@@ -487,7 +581,7 @@ const AddVehicle = (props) => {
                   id="rvehicle-image"
                   label="Image URL"
                   value={image}
-                  onChange={event => setImage(event.target.value)}
+                  onChange={(event) => setImage(event.target.value)}
                   fullWidth={true}
                   required
                 />
@@ -514,14 +608,22 @@ const AddVehicle = (props) => {
                   Register
                 </Button>
               </DialogActions>
-
             </form>
           </Grid>
         </Container>
       </Dialog>
 
-      <Snackbar open={snackOpen} autoHideDuration={6000} onClose={handleCloseSnack}>
-        <MuiAlert onClose={handleCloseSnack} severity="success" elevation={6} variant="filled">
+      <Snackbar
+        open={snackOpen}
+        autoHideDuration={6000}
+        onClose={handleCloseSnack}
+      >
+        <MuiAlert
+          onClose={handleCloseSnack}
+          severity="success"
+          elevation={6}
+          variant="filled"
+        >
           Successfully registered new car
         </MuiAlert>
       </Snackbar>
