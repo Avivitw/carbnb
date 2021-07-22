@@ -32,6 +32,26 @@ export default function MessagesProvider(props) {
       });
   }, [user]);
 
+  // get all the contacts for the user
+  useEffect(() => {
+    axios
+      .get("/api/messages/contacts", {
+        params: {
+          userId: user.id,
+        },
+      })
+      .then(function (response) {
+        // handle success
+        setMessages((prev) => {
+          return { ...prev, rows: response.data };
+        });
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
+  }, [user]);
+
   // add message
   const addMessage = async (userId, contactId, message) => {
     if (user && user.id) {
