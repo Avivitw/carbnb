@@ -6,6 +6,6 @@ CREATE TABLE messages
   sender_id integer NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   receiver_id integer NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   message TEXT,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
 );
