@@ -22,7 +22,6 @@ router.get("/", async (req, res) => {
 
 // GET /api/messages/contacts
 // Returns all contacts that send/received  user messages
-//TODO:add query params userId
 
 router.get("/contacts", async (req, res) => {
   const { userId } = req.query;
