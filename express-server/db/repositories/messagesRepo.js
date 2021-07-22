@@ -42,7 +42,7 @@ exports.createNewMessageAsync = (userId, contactId, message) => {
     VALUES ($1, $2, $3)
     RETURNING *;
   `;
-  const queryParams = [userId, message];
+  const queryParams = [userId, contactId, message];
   return db.query(queryText, queryParams);
 };
 
