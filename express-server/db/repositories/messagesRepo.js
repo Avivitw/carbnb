@@ -35,11 +35,11 @@ exports.getContactsForUserAsync = (userId) => {
   return db.query(queryText, queryParams);
 };
 
-// TODO: support sender/receiver
-exports.createNewMessageAsync = (userId, message) => {
+//add message to DB
+exports.createNewMessageAsync = (userId, contactId, message) => {
   const queryText = `
-    INSERT INTO messages (user_id, message)
-    VALUES ($1, $2)
+    INSERT INTO messages (sender_id,receiver_id, message)
+    VALUES ($1, $2, $3)
     RETURNING *;
   `;
   const queryParams = [userId, message];
