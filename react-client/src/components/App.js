@@ -7,6 +7,7 @@ import CarTheme from "./CarTheme";
 import UserDashboard from "./user-dashboard/UserDashboard";
 import HostDashboard from "./host-dashboard/HostDashboard";
 import TopNav from "./TopNav";
+import Messaging from "./messaging/Messaging";
 
 function App() {
   return (
@@ -17,6 +18,11 @@ function App() {
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
           <Switch>
+            <Route path="/messages">
+              <Messaging></Messaging>
+              <Footer></Footer>
+            </Route>
+
             <Route path="/cars/:id">
               <CarDetails />
               <Footer></Footer>
@@ -32,7 +38,7 @@ function App() {
 
             <Route path="/">
               <Home />
-            <Footer></Footer>
+              <Footer></Footer>
             </Route>
           </Switch>
         </div>
