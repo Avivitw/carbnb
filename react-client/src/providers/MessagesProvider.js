@@ -13,6 +13,9 @@ export default function MessagesProvider(props) {
 
   // get all the messages for the user and specific contact
   useEffect(() => {
+    if (!contactId) {
+      return;
+    }
     axios
       .get("/api/messages", {
         params: {

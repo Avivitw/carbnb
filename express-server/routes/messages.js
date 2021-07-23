@@ -12,7 +12,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     const { userId, contactId } = req.query;
-    const { rows } = await getMessagesForUserIdAsync({ userId, contactId });
+    const { rows } = await getMessagesForUserIdAsync(userId, contactId);
     return res.json(rows);
   } catch (err) {
     console.log("Error retrieving messages", err);
