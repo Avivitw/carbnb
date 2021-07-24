@@ -20,7 +20,7 @@ export default function MessagesProvider(props) {
       .get("/api/messages", {
         params: {
           userId: user.id,
-          selectedContactId,
+          contactId: selectedContactId,
         },
       })
       .then(function (response) {
@@ -57,7 +57,7 @@ export default function MessagesProvider(props) {
       try {
         const response = await axios.post("/api/messages", {
           userId: user.id,
-          selectedContactId,
+          contactId: selectedContactId,
           message,
         });
         setMessages((prev) => {
