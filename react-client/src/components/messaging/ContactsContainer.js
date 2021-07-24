@@ -4,6 +4,7 @@ import ContactItem from "./ContactItem";
 
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
+import List from "@material-ui/core/List";
 
 function ContactsContainer(props) {
   //add the contacts on the messagesContext
@@ -16,7 +17,9 @@ function ContactsContainer(props) {
   return (
     <div>
       <div>Contacts</div>
-      <div>{contactItems}</div>
+      <div>
+        <List dense>{contactItems}</List>
+      </div>
     </div>
   );
 }
