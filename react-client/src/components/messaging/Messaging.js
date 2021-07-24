@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import MessagesProvider from "../../providers/MessagesProvider";
 import ContactsContainer from "./ContactsContainer";
+import MessagesContainer from "./MessagesContainer";
 
 const useStyles = makeStyles((theme) => ({
   main: {
@@ -18,10 +19,10 @@ function Messaging(props) {
       <Container maxWidth="med" className={classes.main}>
         <Grid container spacing={3}>
           <Grid item xs={4}>
-            <ContactsContainer>Contacts</ContactsContainer>
+            <ContactsContainer></ContactsContainer>
           </Grid>
           <Grid item xs={8}>
-            Messages
+            <MessagesContainer></MessagesContainer>
           </Grid>
         </Grid>
       </Container>
