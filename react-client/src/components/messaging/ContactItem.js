@@ -10,9 +10,10 @@ import Grid from "@material-ui/core/Grid";
 
 function ContactItem(props) {
   //add the contacts on the messagesContext
-  const { contactId, setContactId } = useContext(MessagesContext);
+  const { selectedContactId, setSelectedContactId } =
+    useContext(MessagesContext);
   const handleContactChange = function () {
-    setContactId(props.contact.contact_id);
+    setSelectedContactId(props.contact.contact_id);
   };
 
   return (

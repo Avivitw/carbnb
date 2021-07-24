@@ -9,18 +9,18 @@ export default function MessagesProvider(props) {
 
   const [messages, setMessages] = useState([]);
   const [contacts, setContacts] = useState([]);
-  const [contactId, setContactId] = useState();
+  const [selectedContactId, setSelectedContactId] = useState();
 
   // get all the messages for the user and specific contact
   useEffect(() => {
-    if (!contactId) {
+    if (!selectedContactId) {
       return;
     }
     axios
       .get("/api/messages", {
         params: {
           userId: user.id,
-          contactId,
+          selectedContactId,
         },
       })
       .then(function (response) {
@@ -31,7 +31,7 @@ export default function MessagesProvider(props) {
         // handle error
         console.log(error);
       });
-  }, [user, contactId]);
+  }, [user, selectedContactId]);
 
   // get all the contacts for the user
   useEffect(() => {
@@ -57,7 +57,7 @@ export default function MessagesProvider(props) {
       try {
         const response = await axios.post("/api/messages", {
           userId: user.id,
-          contactId,
+          selectedContactId,
           message,
         });
         setMessages((prev) => {
@@ -74,8 +74,8 @@ export default function MessagesProvider(props) {
     messages,
     addMessage,
     contacts,
-    contactId,
-    setContactId,
+    selectedContactId,
+    setSelectedContactId,
   };
 
   return (
