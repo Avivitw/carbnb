@@ -1,9 +1,7 @@
-import { useContext, createContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import { MessagesContext } from "../../providers/MessagesProvider";
 import ContactItem from "./ContactItem";
 
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
 import List from "@material-ui/core/List";
 
 function ContactsContainer(props) {
