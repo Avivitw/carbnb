@@ -1,9 +1,19 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { MessagesContext } from "../../providers/MessagesProvider";
 import MessageItem from "./MessageItem";
+import { TextField } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import Icon from "@material-ui/core/Icon";
 
 function MessagesContainer(props) {
-  const { messages, addMessage } = useContext(MessagesContext);
+  const { messages, addMessage, selectedContactId } =
+    useContext(MessagesContext);
+  const [messageText, setMessageText] = useState("");
+
+  const handleSendClick = (event) => {
+    addMessage(messageText);
+    setMessageText("");
+  };
 
   const messageItems = messages.map((message) => {
     return <MessageItem message={message}></MessageItem>;
@@ -12,6 +22,26 @@ function MessagesContainer(props) {
   return (
     <div>
       <div>{messageItems}</div>
+      {selectedContactId && (
+        <div>
+          <TextField
+            type="text"
+            placeholder="Write a Message"
+            multiline
+            value={messageText}
+            onChange={(event) => setMessageText(event.target.value)}
+            fullWidth={true}
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            endIcon={<Icon>send</Icon>}
+            onClick={handleSendClick}
+          >
+            Send
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
