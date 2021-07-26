@@ -5,6 +5,8 @@ import { TextField } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
 
+import "./MessagesContainer.scss";
+
 function MessagesContainer(props) {
   const { messages, addMessage, selectedContactId } =
     useContext(MessagesContext);
@@ -33,6 +35,7 @@ function MessagesContainer(props) {
             fullWidth={true}
           />
           <Button
+            className={"send-button"}
             variant="contained"
             color="primary"
             endIcon={<Icon>send</Icon>}
