@@ -34,15 +34,17 @@ function MessagesContainer(props) {
             onChange={(event) => setMessageText(event.target.value)}
             fullWidth={true}
           />
-          <Button
-            className={"send-button"}
-            variant="contained"
-            color="primary"
-            endIcon={<Icon>send</Icon>}
-            onClick={handleSendClick}
-          >
-            Send
-          </Button>
+          {messageText !== "" && (
+            <Button
+              className={"send-button"}
+              variant="contained"
+              color="primary"
+              endIcon={<Icon>send</Icon>}
+              onClick={handleSendClick}
+            >
+              Send
+            </Button>
+          )}
         </div>
       )}
     </div>
