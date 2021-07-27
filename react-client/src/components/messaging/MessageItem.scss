@@ -1,0 +1,17 @@
+.message-row {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  > div {
+    padding: 8px;
+    background-color: #ccccdd;
+    border-radius: 5px;
+    max-width: 80%;
+    min-width: 50%;
+    align-self: flex-end;
+    &.received-message {
+      background-color: #ccddcc;
+      align-self: flex-start;
+    }
+  }
+}

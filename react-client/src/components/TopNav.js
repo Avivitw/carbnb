@@ -14,10 +14,10 @@ import {
   Snackbar,
   Toolbar,
   Menu,
-  MenuItem,
 } from "@material-ui/core";
 
 import { makeStyles, alpha } from "@material-ui/core/styles";
+import MenuItem from "@material-ui/core/MenuItem";
 
 import MuiAlert from "@material-ui/lab/Alert";
 import AccountCircle from "@material-ui/icons/AccountCircle";
@@ -26,19 +26,18 @@ import "./TopNav.scss";
 
 const useStyles = makeStyles((theme) => ({
   login: {
-    font: 'Trebuchet MS',
+    font: "Trebuchet MS",
     fontSize: "larger",
   },
   topnav__logo: {
-    font: 'Trebuchet MS',
-
+    font: "Trebuchet MS",
   },
   icon: {
     width: theme.spacing(8),
     height: theme.spacing(8),
   },
   iconButton: {
-    font: 'Trebuchet MS',
+    font: "Trebuchet MS",
     minWidth: "48px",
     textAlign: "center",
     flex: "0 0 auto",
@@ -199,16 +198,25 @@ const TopNav = (props) => {
               variant="h5"
               onClick={() => history.push("/")}
               className="topnav__logo"
-            >Share My Ride
+            >
+              Share My Ride
             </Typography>
           </div>
           <div>
             {!auth && (
               <>
-                <Button className={classes.login} color="inherit" onClick={() => setLoginOpen(true)}>
+                <Button
+                  className={classes.login}
+                  color="inherit"
+                  onClick={() => setLoginOpen(true)}
+                >
                   Login
                 </Button>
-                <Button className={classes.login} color="inherit" onClick={() => setRegisterOpen(true)}>
+                <Button
+                  className={classes.login}
+                  color="inherit"
+                  onClick={() => setRegisterOpen(true)}
+                >
                   Register
                 </Button>
               </>
@@ -226,7 +234,7 @@ const TopNav = (props) => {
                 className={classes.iconButton}
               >
                 {user.name}
-                <AccountCircle className={classes.icon}/>
+                <AccountCircle className={classes.icon} />
               </Button>
               <Menu
                 id="menu-appbar"
