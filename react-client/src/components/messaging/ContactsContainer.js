@@ -14,7 +14,7 @@ function ContactsContainer(props) {
 
   return (
     <div>
-      <div>Contacts</div>
+      <h2>Contacts</h2>
       <div>
         <List dense>{contactItems}</List>
       </div>
