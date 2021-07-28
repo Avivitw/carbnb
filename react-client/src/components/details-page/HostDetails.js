@@ -2,12 +2,23 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom";
+import EmailIcon from "@material-ui/icons/Email";
+import { makeStyles } from "@material-ui/core/styles";
 
 import "./HostDetails.scss";
+const useStyles = makeStyles((theme) => ({
+  email: {
+    fontSize: "2em",
+  },
+  name: {
+    fontSize: "1.2em",
+  },
+}));
 
 const HostDetails = (props) => {
-  const { email, id, image, name } = props.owner;
+  const { id, image, name } = props.owner;
   const [avgRating, setAvgRating] = useState(0);
+  const classes = useStyles();
 
   useEffect(() => {
     const getHostReviews = async () => {
@@ -35,9 +46,11 @@ const HostDetails = (props) => {
   return (
     <div className="host-details">
       <img className="host-details__image" src={image} alt="host's avatar" />
+
       <div className="host-details__details">
+        <div className={classes.name}>{name}</div>
         <Link to={(location) => `/messages?contactId=${id}`}>
-          <div>{name}</div>
+          <EmailIcon className={classes.email}></EmailIcon>
         </Link>
       </div>
       {avgRating !== 0 && (
