@@ -1,9 +1,23 @@
 import { useContext } from "react";
 import { MessagesContext } from "../../providers/MessagesProvider";
 import "./MessageItem.scss";
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  delete: {
+    float: "right",
+  },
+}));
 
 function MessageItem(props) {
-  // const { messages } = useContext(MessagesContext);
+  const { removeMessage } = useContext(MessagesContext);
+
+  const classes = useStyles();
+  const handleDeleteClick = (event) => {
+    removeMessage(props.message.id);
+  };
 
   return (
     <div className={"message-row"}>
@@ -15,6 +29,10 @@ function MessageItem(props) {
         }
       >
         {props.message.message}
+        <DeleteForeverIcon
+          className={classes.delete}
+          onClick={handleDeleteClick}
+        ></DeleteForeverIcon>
       </div>
     </div>
   );
