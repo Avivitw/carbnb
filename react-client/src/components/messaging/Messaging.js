@@ -16,7 +16,7 @@ function Messaging(props) {
 
   return (
     <MessagesProvider>
-      <Container maxWidth="med" className={classes.main}>
+      <Container maxWidth="md" className={classes.main}>
         <Grid container spacing={3}>
           <Grid item xs={4}>
             <ContactsContainer></ContactsContainer>
