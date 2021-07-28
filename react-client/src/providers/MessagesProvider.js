@@ -107,9 +107,25 @@ export default function MessagesProvider(props) {
     }
   };
 
+  // delete message
+  const removeMessage = async (id) => {
+    try {
+      await axios.delete(`/api/messages/${id}/${user.id}`);
+      setMessages((prev) => {
+        return [...prev].filter((message) => {
+          return message.id !== id;
+        });
+      });
+      return { result: "success", error: null };
+    } catch (err) {
+      return { result: "failed", error: err };
+    }
+  };
+
   const messagesData = {
     messages,
     addMessage,
+    removeMessage,
     contacts,
     selectedContactId,
     setSelectedContactId,
