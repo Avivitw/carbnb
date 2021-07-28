@@ -35,6 +35,17 @@ exports.getContactsForUserAsync = (userId) => {
   return db.query(queryText, queryParams);
 };
 
+//get  a contact
+exports.getContactForUserAsync = (contact_id) => {
+  const queryText = `
+    SELECT users.id as contact_id, users.name, users.image
+    FROM users
+    WHERE users.id  = $1
+    ;
+  `;
+  const queryParams = [contact_id];
+  return db.query(queryText, queryParams);
+};
 //add message to DB
 exports.createNewMessageAsync = (userId, contactId, message) => {
   const queryText = `

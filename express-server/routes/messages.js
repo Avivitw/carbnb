@@ -3,6 +3,7 @@ const {
   getMessagesForUserIdAsync,
   getContactsForUserAsync,
   createNewMessageAsync,
+  getContactForUserAsync,
 } = require("../db/repositories/messagesRepo");
 
 const router = express.Router();
@@ -28,6 +29,19 @@ router.get("/contacts", async (req, res) => {
   try {
     const { rows } = await getContactsForUserAsync(userId);
     return res.json(rows);
+  } catch (err) {
+    console.log("Error retrieving messages", err);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// GET /api/messages?contacts=[]
+// Returns  selected contact Id
+
+router.get("/contacts/:contactId", async (req, res) => {
+  try {
+    const { rows } = await getContactForUserAsync(req.params.contactId);
+    return res.json(rows[0]);
   } catch (err) {
     console.log("Error retrieving messages", err);
     return res.status(500).json({ error: "Internal server error" });
