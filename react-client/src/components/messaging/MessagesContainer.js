@@ -18,7 +18,7 @@ function MessagesContainer(props) {
   };
 
   const messageItems = messages.map((message) => {
-    return <MessageItem message={message}></MessageItem>;
+    return <MessageItem key={message.id} message={message}></MessageItem>;
   });
 
   return (
