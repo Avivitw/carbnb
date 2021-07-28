@@ -9,8 +9,9 @@ function MessageItem(props) {
     <div className={"message-row"}>
       <div
         className={
-          props.message.sender_id === props.message.contact_id &&
-          "received-message"
+          props.message.sender_id === props.message.contact_id
+            ? "received-message"
+            : undefined
         }
       >
         {props.message.message}
