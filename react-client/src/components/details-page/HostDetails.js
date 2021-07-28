@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import ReactStars from 'react-rating-stars-component';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import ReactStars from "react-rating-stars-component";
+import { Link } from "react-router-dom";
 
-import './HostDetails.scss';
+import "./HostDetails.scss";
 
-const HostDetails = props => {
+const HostDetails = (props) => {
   const { email, id, image, name } = props.owner;
   const [avgRating, setAvgRating] = useState(0);
 
@@ -14,7 +15,10 @@ const HostDetails = props => {
         try {
           const response = await axios.get(`/api/reviews?hostId=${id}`);
 
-          const rating = Math.floor(response.data.reduce((acc, curr) => curr.rating + acc, 0) / response.data.length);
+          const rating = Math.floor(
+            response.data.reduce((acc, curr) => curr.rating + acc, 0) /
+              response.data.length
+          );
           if (isNaN(rating)) {
             setAvgRating(0);
           } else {
@@ -30,24 +34,23 @@ const HostDetails = props => {
 
   return (
     <div className="host-details">
-      <img
-        className="host-details__image"
-        src={image}
-        alt="host's avatar"
-      />
+      <img className="host-details__image" src={image} alt="host's avatar" />
       <div className="host-details__details">
-        <div>{name}</div>
-        <div><a href={`mailto:${email}`}>Email {name}</a></div>
+        <Link to={(location) => `/messages?contactId=${id}`}>
+          <div>{name}</div>
+        </Link>
       </div>
-      {(avgRating !== 0) && (<div className="host-details__reviews">
-        <ReactStars
-          count={5}
-          size={36}
-          activeColor="#ffd700"
-          value={avgRating}
-          edit={false}
-        />
-      </div>)}
+      {avgRating !== 0 && (
+        <div className="host-details__reviews">
+          <ReactStars
+            count={5}
+            size={36}
+            activeColor="#ffd700"
+            value={avgRating}
+            edit={false}
+          />
+        </div>
+      )}
     </div>
   );
 };
