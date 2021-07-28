@@ -57,11 +57,11 @@ exports.createNewMessageAsync = (userId, contactId, message) => {
   return db.query(queryText, queryParams);
 };
 
-// exports.deleteMessageAsync = (userId, id) => {
-//   const queryText = `
-//     DELETE FROM messages
-//     WHERE user_id = $1 AND id = $2;
-//   `;
-//   const queryParams = [userId, id];
-//   return db.query(queryText, queryParams);
-// };
+exports.deleteMessageAsync = (id, userId) => {
+  const queryText = `
+    DELETE FROM messages
+    WHERE id = $1 AND sender_id = $2;
+  `;
+  const queryParams = [id, userId];
+  return db.query(queryText, queryParams);
+};
