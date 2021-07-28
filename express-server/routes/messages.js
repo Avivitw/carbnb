@@ -4,6 +4,7 @@ const {
   getContactsForUserAsync,
   createNewMessageAsync,
   getContactForUserAsync,
+  deleteMessageAsync,
 } = require("../db/repositories/messagesRepo");
 
 const router = express.Router();
@@ -61,17 +62,17 @@ router.post("/", async (req, res) => {
   }
 });
 
-// // DELETE /api/messages/:userId/:carId
-// // Deletes the messages entry with given ids
-// router.delete("/:userId/:carId", async (req, res) => {
-//   const { userId, carId } = req.params;
-//   try {
-//     _ = await deleteFavouriteAsync(userId, carId);
-//     return res.status(204).json();
-//   } catch (err) {
-//     console.log("Error deleting favourite", err);
-//     return res.status(500).json({ error: "Internal server error" });
-//   }
-// });
+// DELETE /api/messages/:id/:userId
+// Deletes the messages entry with given ids
+router.delete("/:id/:userId", async (req, res) => {
+  const { id, userId } = req.params;
+  try {
+    _ = await deleteMessageAsync(id, userId);
+    return res.status(204).json();
+  } catch (err) {
+    console.log("Error deleting message", err);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 module.exports = router;
