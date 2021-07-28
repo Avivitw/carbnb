@@ -32,7 +32,9 @@ function ContactItem(props) {
       id={props.contact.contact_id}
       onClick={handleContactChange}
       className={
-        selectedContactId === props.contact.contact_id ? classes.selected : ""
+        selectedContactId === props.contact.contact_id
+          ? classes.selected
+          : undefined
       }
     >
       <ListItemAvatar>

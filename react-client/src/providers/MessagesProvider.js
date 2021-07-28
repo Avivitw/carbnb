@@ -1,6 +1,8 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import { authContext } from "../providers/authProvider";
 
+import { useLocation } from "react-router-dom";
+
 const axios = require("axios");
 export default function MessagesProvider(props) {
   const { user } = useContext(authContext);
@@ -8,9 +10,18 @@ export default function MessagesProvider(props) {
   ////////////////// messages state ///////////////////////
 
   const [messages, setMessages] = useState([]);
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(); //not initializing as Array to detect initil state vs empty array
   const [selectedContactId, setSelectedContactId] = useState();
 
+  function useQuery() {
+    return new URLSearchParams(useLocation().search);
+  }
+  let query = useQuery();
+
+  if (!selectedContactId) {
+    const queryContactId = Number(query.get("contactId"));
+    if (!isNaN(queryContactId)) setSelectedContactId(queryContactId);
+  }
   // get all the messages for the user and specific contact
   useEffect(() => {
     if (!selectedContactId) {
@@ -51,6 +62,32 @@ export default function MessagesProvider(props) {
       });
   }, [user]);
 
+  // check if we have this user on our contacts and if not get it
+  useEffect(() => {
+    if (!selectedContactId || !contacts) {
+      return;
+    }
+    if (
+      contacts.find((contact) => {
+        return contact.contact_id === selectedContactId;
+      })
+    ) {
+      return;
+    }
+    axios
+      .get(`/api/messages/contacts/${selectedContactId}`)
+      .then(function (response) {
+        // handle success
+        setContacts((prev) => {
+          return [...prev, response.data];
+        });
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
+  }, [contacts, selectedContactId]);
+
   // add message
   const addMessage = async (message) => {
     if (user && user.id) {
@@ -70,9 +107,25 @@ export default function MessagesProvider(props) {
     }
   };
 
+  // delete message
+  const removeMessage = async (id) => {
+    try {
+      await axios.delete(`/api/messages/${id}/${user.id}`);
+      setMessages((prev) => {
+        return [...prev].filter((message) => {
+          return message.id !== id;
+        });
+      });
+      return { result: "success", error: null };
+    } catch (err) {
+      return { result: "failed", error: err };
+    }
+  };
+
   const messagesData = {
     messages,
     addMessage,
+    removeMessage,
     contacts,
     selectedContactId,
     setSelectedContactId,

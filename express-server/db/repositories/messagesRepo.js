@@ -35,6 +35,17 @@ exports.getContactsForUserAsync = (userId) => {
   return db.query(queryText, queryParams);
 };
 
+//get  a contact
+exports.getContactForUserAsync = (contact_id) => {
+  const queryText = `
+    SELECT users.id as contact_id, users.name, users.image
+    FROM users
+    WHERE users.id  = $1
+    ;
+  `;
+  const queryParams = [contact_id];
+  return db.query(queryText, queryParams);
+};
 //add message to DB
 exports.createNewMessageAsync = (userId, contactId, message) => {
   const queryText = `
@@ -46,11 +57,11 @@ exports.createNewMessageAsync = (userId, contactId, message) => {
   return db.query(queryText, queryParams);
 };
 
-// exports.deleteMessageAsync = (userId, id) => {
-//   const queryText = `
-//     DELETE FROM messages
-//     WHERE user_id = $1 AND id = $2;
-//   `;
-//   const queryParams = [userId, id];
-//   return db.query(queryText, queryParams);
-// };
+exports.deleteMessageAsync = (id, userId) => {
+  const queryText = `
+    DELETE FROM messages
+    WHERE id = $1 AND sender_id = $2;
+  `;
+  const queryParams = [id, userId];
+  return db.query(queryText, queryParams);
+};

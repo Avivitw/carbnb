@@ -189,6 +189,12 @@ const TopNav = (props) => {
     history.push("/host-dashboard");
     closeMenu();
   };
+
+  const handleMessages = () => {
+    history.push("/messages");
+    closeMenu();
+  };
+
   return (
     <nav>
       <AppBar position="fixed">
@@ -254,6 +260,7 @@ const TopNav = (props) => {
                 <MenuItem onClick={handleUserDashboard}>
                   User Dashboard
                 </MenuItem>
+                <MenuItem onClick={handleMessages}>Messages</MenuItem>
                 {user.hosts && (
                   <MenuItem onClick={handleHostDashboard}>
                     Host Dashboard

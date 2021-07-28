@@ -8,9 +8,13 @@ function ContactsContainer(props) {
   //add the contacts on the messagesContext
   const { contacts } = useContext(MessagesContext);
 
-  const contactItems = contacts.map((contact) => {
-    return <ContactItem contact={contact}></ContactItem>;
-  });
+  const contactItems =
+    contacts &&
+    contacts.map((contact) => {
+      return (
+        <ContactItem key={contact.contact_id} contact={contact}></ContactItem>
+      );
+    });
 
   return (
     <div>
