@@ -7,6 +7,6 @@ CREATE TABLE availability
   start_date DATE NOT NULL,
   end_date DATE NOT NULL,
   delivery BOOLEAN NOT NULL,
-  car_id INTEGER NOT NULL REFERENCES cars(id),
+  car_id INTEGER NOT NULL REFERENCES cars(id) ON DELETE CASCADE,
   price MONEY NOT NULL
 );
