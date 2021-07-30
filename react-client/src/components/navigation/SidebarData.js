@@ -1,6 +1,6 @@
 import React from "react";
 
-import ChatIcon from "@material-ui/icons/Chat";
+// import ChatIcon from "@material-ui/icons/Chat";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import HomeIcon from "@material-ui/icons/Home";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
