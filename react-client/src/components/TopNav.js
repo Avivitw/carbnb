@@ -32,10 +32,10 @@ const useStyles = makeStyles((theme) => ({
   topnav__logo: {
     font: "Trebuchet MS",
   },
-  icon: {
-    width: theme.spacing(8),
-    height: theme.spacing(8),
-  },
+  // icon: {
+  //   width: theme.spacing(8),
+  //   height: theme.spacing(8),
+  // },
   iconButton: {
     font: "Trebuchet MS",
     minWidth: "48px",
@@ -72,6 +72,10 @@ const useStyles = makeStyles((theme) => ({
     height: theme.spacing(8),
     boxShadow: theme.shadows[8],
     marginLeft: "8px",
+  },
+  topnav__logo: {
+    fontWeight: "500",
+    fontSize: "30px",
   },
 }));
 
@@ -210,7 +214,7 @@ const TopNav = (props) => {
             <Typography
               variant="h5"
               onClick={() => history.push("/")}
-              className="topnav__logo"
+              className={classes.topnav__logo}
             >
               Share My Ride
             </Typography>
