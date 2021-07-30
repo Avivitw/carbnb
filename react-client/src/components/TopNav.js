@@ -15,10 +15,10 @@ import {
   Toolbar,
   Menu,
   Avatar,
+  MenuItem,
 } from "@material-ui/core";
 
 import { makeStyles, alpha } from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
 
 import MuiAlert from "@material-ui/lab/Alert";
 

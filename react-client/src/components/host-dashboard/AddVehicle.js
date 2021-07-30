@@ -15,6 +15,7 @@ import {
   DialogContentText,
   TextField,
   Snackbar,
+  MenuItem,
   FormControl,
   Checkbox,
   Grid,
@@ -22,8 +23,6 @@ import {
   Container,
   InputLabel,
 } from "@material-ui/core";
-import MenuItem from "@material-ui/core/MenuItem";
-
 // select
 import { authContext } from "../../providers/authProvider";
 
