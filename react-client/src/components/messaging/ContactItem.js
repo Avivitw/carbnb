@@ -14,6 +14,11 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.primary.light,
     },
   },
+  text: {
+    "& > span": {
+      fontSize: "18px",
+    },
+  },
 }));
 
 function ContactItem(props) {
@@ -40,7 +45,7 @@ function ContactItem(props) {
       <ListItemAvatar>
         <Avatar alt={props.contact.name} src={props.contact.image} />
       </ListItemAvatar>
-      <ListItemText primary={props.contact.name} />
+      <ListItemText primary={props.contact.name} className={classes.text} />
     </ListItem>
   );
 }
