@@ -20,7 +20,7 @@ export default function MessagesProvider(props) {
 
   if (!selectedContactId) {
     const queryContactId = Number(query.get("contactId"));
-    if (!isNaN(queryContactId)) setSelectedContactId(queryContactId);
+    if (queryContactId > 0) setSelectedContactId(queryContactId);
   }
   // get all the messages for the user and specific contact
   useEffect(() => {

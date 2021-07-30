@@ -4,11 +4,8 @@ import { useContext } from "react";
 import { searchContext } from "../providers/SearchProvider";
 
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
+import { Paper, Grid, Checkbox, FormControlLabel } from "@material-ui/core";
 import Favorite from "@material-ui/icons/Favorite";
-import Checkbox from "@material-ui/core/Checkbox";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import { purple } from "@material-ui/core/colors";
 

@@ -14,13 +14,13 @@ import {
   Snackbar,
   Toolbar,
   Menu,
+  Avatar,
+  MenuItem,
 } from "@material-ui/core";
 
 import { makeStyles, alpha } from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
 
 import MuiAlert from "@material-ui/lab/Alert";
-import AccountCircle from "@material-ui/icons/AccountCircle";
 
 import "./TopNav.scss";
 
@@ -32,10 +32,10 @@ const useStyles = makeStyles((theme) => ({
   topnav__logo: {
     font: "Trebuchet MS",
   },
-  icon: {
-    width: theme.spacing(8),
-    height: theme.spacing(8),
-  },
+  // icon: {
+  //   width: theme.spacing(8),
+  //   height: theme.spacing(8),
+  // },
   iconButton: {
     font: "Trebuchet MS",
     minWidth: "48px",
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     flex: "0 0 auto",
     fontSize: theme.typography.pxToRem(22),
     padding: 12,
-    borderRadius: "50%",
+    borderRadius: "16px",
     overflow: "visible",
     textTransform: "none",
     // Explicitly set the default value to solve a bug on IE 11.
@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.shortest,
     }),
     "&:hover": {
+      color: "#fff",
       backgroundColor: (0, alpha)(
         theme.palette.action.active,
         theme.palette.action.hoverOpacity
@@ -65,6 +66,16 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "transparent",
       color: theme.palette.action.disabled,
     },
+  },
+  large: {
+    width: theme.spacing(8),
+    height: theme.spacing(8),
+    boxShadow: theme.shadows[8],
+    marginLeft: "8px",
+  },
+  topnav__logo: {
+    fontWeight: "500",
+    fontSize: "30px",
   },
 }));
 
@@ -203,7 +214,7 @@ const TopNav = (props) => {
             <Typography
               variant="h5"
               onClick={() => history.push("/")}
-              className="topnav__logo"
+              className={classes.topnav__logo}
             >
               Share My Ride
             </Typography>
@@ -240,7 +251,11 @@ const TopNav = (props) => {
                 className={classes.iconButton}
               >
                 {user.name}
-                <AccountCircle className={classes.icon} />
+                <Avatar
+                  alt={user.name}
+                  src={user.image}
+                  className={classes.large}
+                />
               </Button>
               <Menu
                 id="menu-appbar"
