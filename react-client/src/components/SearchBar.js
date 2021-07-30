@@ -10,9 +10,9 @@ import {
   Button,
   Checkbox,
   Grid,
+  MenuItem,
+  Container,
 } from "@material-ui/core";
-import MenuItem from "@material-ui/core/MenuItem";
-import Container from "@material-ui/core/Container";
 
 import DateFnsUtils from "@date-io/date-fns";
 import {
@@ -36,10 +36,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "200px",
     opacity: 0.85,
   },
-  checkbox: {
-    alignContent: "flex-end",
-    alignItems: "center",
-  },
+
   Submit: {
     font: "Trebuchet MS",
     fontSize: theme.typography.pxToRem(20),
@@ -102,7 +99,6 @@ function SearchBar(props) {
           </Grid>
           <Grid item xs={6}>
             <KeyboardDatePicker
-              className={classes.input}
               disableToolbar
               variant="inline"
               format="dd/MM/yyyy"
@@ -119,7 +115,6 @@ function SearchBar(props) {
           </Grid>
           <Grid item xs={6}>
             <KeyboardDatePicker
-              className={classes.input}
               disableToolbar
               variant="inline"
               format="dd/MM/yyyy"
@@ -146,7 +141,7 @@ function SearchBar(props) {
           </Grid>
 
           {search.location !== "" && (
-            <Fragment className={classes.chekbox}>
+            <Fragment>
               <Grid item xs={4}>
                 <FormControlLabel
                   control={
