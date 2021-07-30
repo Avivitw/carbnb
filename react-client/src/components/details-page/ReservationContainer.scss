@@ -2,32 +2,32 @@
   display: flex;
   flex-direction: column;
 
-  button {
-    margin-top: 1rem;
-  }
+  // button {
+  //   margin-top: 1rem;
+  // }
 
-  &__date-picker {
-    margin-top: 1rem;
+  // &__date-picker {
+  //   margin-top: 1rem;
 
-    span {
-      margin-bottom: 1rem;
-    }
-  }
+  //   span {
+  //     margin-bottom: 1rem;
+  //   }
+  // }
 
-  > div > div {
-    width: 100%;
+  // > div > div {
+  //   width: 100%;
 
-    div {
-      > div {
-        padding: 0;
-        // padding-right: .5rem;
-        width: 100%;
-      }
+  //   div {
+  //     > div {
+  //       padding: 0;
+  //       // padding-right: .5rem;
+  //       width: 100%;
+  //     }
 
-      > div > div > div {
-        width: 100%;
-        padding: 0;
-      }
-    }
-  }
+  //     > div > div > div {
+  //       width: 100%;
+  //       padding: 0;
+  //     }
+  //   }
+  // }
 }
