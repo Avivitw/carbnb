@@ -14,6 +14,9 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     const { userId, contactId } = req.query;
+    if (req.session.userId != userId) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
     const { rows } = await getMessagesForUserIdAsync(userId, contactId);
     return res.json(rows);
   } catch (err) {
@@ -27,6 +30,9 @@ router.get("/", async (req, res) => {
 
 router.get("/contacts", async (req, res) => {
   const { userId } = req.query;
+  if (req.session.userId != userId) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
   try {
     const { rows } = await getContactsForUserAsync(userId);
     return res.json(rows);
@@ -53,6 +59,9 @@ router.get("/contacts/:contactId", async (req, res) => {
 // Add a message to a user's messages
 router.post("/", async (req, res) => {
   const { userId, contactId, message } = req.body;
+  if (req.session.userId != userId) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
   try {
     const { rows } = await createNewMessageAsync(userId, contactId, message);
     return res.status(201).json(rows[0]);
@@ -66,6 +75,9 @@ router.post("/", async (req, res) => {
 // Deletes the messages entry with given ids
 router.delete("/:id/:userId", async (req, res) => {
   const { id, userId } = req.params;
+  if (req.session.userId != userId) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
   try {
     _ = await deleteMessageAsync(id, userId);
     return res.status(204).json();
