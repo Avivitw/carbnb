@@ -1,5 +1,6 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import { authContext } from "../providers/authProvider";
+import useWebSocket from "react-use-websocket";
 
 import { useLocation } from "react-router-dom";
 
@@ -12,6 +13,56 @@ export default function MessagesProvider(props) {
   const [messages, setMessages] = useState([]);
   const [contacts, setContacts] = useState(); //not initializing as Array to detect initil state vs empty array
   const [selectedContactId, setSelectedContactId] = useState();
+  const [socketUrl, setSocketUrl] = useState(
+    `ws://localhost:8080/api/messages/socket/${user.id}`
+  );
+  const [incomingMessage, setIncomingMessage] = useState(0);
+
+  // const wsMessageHistory = useRef([]);
+
+  const { lastMessage } = useWebSocket(socketUrl, {
+    // onOpen: () => console.log("opened"),
+  });
+
+  useEffect(() => {
+    if (!lastMessage) {
+      return;
+    }
+    const newMessage = JSON.parse(lastMessage.data);
+    if (newMessage && newMessage.fromId) {
+      if (newMessage.fromId === selectedContactId) {
+        //current displayed contact
+        setIncomingMessage(incomingMessage + 1);
+      } else {
+        //not displayed contact
+        setContacts((prev) => {
+          return prev.map((contact) => {
+            if (contact.contact_id === newMessage.fromId) {
+              return { ...contact, newMessage: true };
+            } else {
+              return contact;
+            }
+          });
+        });
+      }
+    }
+  }, [lastMessage]);
+
+  // When contact is selected change new message to false to dismiss the dot notification
+  useEffect(() => {
+    if (!contacts) {
+      return;
+    }
+    setContacts((prev) => {
+      return prev.map((contact) => {
+        if (contact.contact_id === selectedContactId) {
+          return { ...contact, newMessage: false };
+        } else {
+          return contact;
+        }
+      });
+    });
+  }, [selectedContactId]);
 
   function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -42,7 +93,7 @@ export default function MessagesProvider(props) {
         // handle error
         console.log(error);
       });
-  }, [user, selectedContactId]);
+  }, [user, selectedContactId, incomingMessage]);
 
   // get all the contacts for the user
   useEffect(() => {

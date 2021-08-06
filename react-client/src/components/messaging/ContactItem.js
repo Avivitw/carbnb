@@ -1,9 +1,11 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MessagesContext } from "../../providers/MessagesProvider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
+import Badge from "@material-ui/core/Badge";
+
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -17,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
   text: {
     "& > span": {
       fontSize: "18px",
+    },
+  },
+  dot: {
+    "&>span.MuiBadge-badge": {
+      backgroundColor: "#f48fb1",
     },
   },
 }));
@@ -43,7 +50,14 @@ function ContactItem(props) {
       }
     >
       <ListItemAvatar>
-        <Avatar alt={props.contact.name} src={props.contact.image} />
+        <Badge
+          className={classes.dot}
+          badgeContent=" "
+          variant="dot"
+          invisible={!props.contact.newMessage}
+        >
+          <Avatar alt={props.contact.name} src={props.contact.image} />
+        </Badge>
       </ListItemAvatar>
       <ListItemText primary={props.contact.name} className={classes.text} />
     </ListItem>
