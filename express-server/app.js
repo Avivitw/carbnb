@@ -2,14 +2,13 @@
 require("dotenv").config();
 
 const express = require("express");
+const app = express();
+
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const session = require("express-session");
-
-// import routes
-const mountRoutes = require("./routes");
-
-const app = express();
+const expressWs = require("express-ws");
+expressWs(app);
 
 // Load port from environment
 const PORT = process.env.PORT || 8080;
@@ -27,6 +26,8 @@ app.use(
   })
 );
 
+// import routes
+const mountRoutes = require("./routes");
 // Setup / mount routes
 mountRoutes(app);
 
