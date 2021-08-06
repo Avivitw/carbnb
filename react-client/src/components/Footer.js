@@ -1,5 +1,5 @@
-import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
+import { Grid, Container } from "@material-ui/core";
+// import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import EmailIcon from "@material-ui/icons/Email";

@@ -15,9 +15,9 @@ import {
   Toolbar,
   Menu,
   Avatar,
-  MenuItem,
+  // MenuItem,
 } from "@material-ui/core";
-
+import MenuItem from "@material-ui/core/MenuItem";
 import { makeStyles, alpha } from "@material-ui/core/styles";
 
 import MuiAlert from "@material-ui/lab/Alert";

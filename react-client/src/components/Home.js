@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar";
 import PopularLocations from "./PopularLocations";
 import SearchResultsContainer from "./SearchResultsContainer";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
+import { Container } from "@material-ui/core";
 import SearchProvider from "../providers/SearchProvider";
 import { Typography } from "@material-ui/core";
 import BackgroundImage from "./BackgroundImage";

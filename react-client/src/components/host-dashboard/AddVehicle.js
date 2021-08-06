@@ -425,142 +425,144 @@ const AddVehicle = (props) => {
                   </RadioGroup>
                 </FormControl>
               </Grid>
-
-              <FormControl fullWidth={true} className={classes.trans}>
-                <FormLabel component="legend">Vehicle Information</FormLabel>
-                <FormGroup row>
-                  <Grid item xs={2}>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={checkState.sport}
-                          onChange={handleCheckChange}
-                          name="sport"
+              <Grid item xs={12}>
+                <FormControl fullWidth={true} className={classes.trans}>
+                  <FormLabel component="legend">Vehicle Information</FormLabel>
+                  <FormGroup row>
+                    <Grid container spacing={3}>
+                      <Grid item xs={2}>
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              checked={checkState.sport}
+                              onChange={handleCheckChange}
+                              name="sport"
+                            />
+                          }
+                          label="Sport"
                         />
-                      }
-                      label="Sport"
-                    />
-                  </Grid>
+                      </Grid>
 
-                  <Grid item xs={2}>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={checkState.luxury}
-                          onChange={handleCheckChange}
-                          name="luxury"
+                      <Grid item xs={2}>
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              checked={checkState.luxury}
+                              onChange={handleCheckChange}
+                              name="luxury"
+                            />
+                          }
+                          label="Luxury"
                         />
-                      }
-                      label="Luxury"
-                    />
-                  </Grid>
+                      </Grid>
 
-                  <Grid item xs={2}>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={checkState.economy}
-                          onChange={handleCheckChange}
-                          name="economy"
+                      <Grid item xs={2}>
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              checked={checkState.economy}
+                              onChange={handleCheckChange}
+                              name="economy"
+                            />
+                          }
+                          label="Economy"
                         />
-                      }
-                      label="Economy"
-                    />
-                  </Grid>
+                      </Grid>
 
-                  <Grid item xs={3}>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={checkState.truck}
-                          onChange={handleCheckChange}
-                          name="truck"
+                      <Grid item xs={3}>
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              checked={checkState.truck}
+                              onChange={handleCheckChange}
+                              name="truck"
+                            />
+                          }
+                          label="Truck"
                         />
-                      }
-                      label="Truck"
-                    />
-                  </Grid>
+                      </Grid>
 
-                  <Grid item xs={3}>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={checkState.van}
-                          onChange={handleCheckChange}
-                          name="van"
+                      <Grid item xs={3}>
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              checked={checkState.van}
+                              onChange={handleCheckChange}
+                              name="van"
+                            />
+                          }
+                          label="Van"
                         />
-                      }
-                      label="Van"
-                    />
-                  </Grid>
+                      </Grid>
 
-                  <Grid item xs={2}>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={checkState.miniVan}
-                          onChange={handleCheckChange}
-                          name="miniVan"
+                      <Grid item xs={2}>
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              checked={checkState.miniVan}
+                              onChange={handleCheckChange}
+                              name="miniVan"
+                            />
+                          }
+                          label="Mini Van"
                         />
-                      }
-                      label="Mini Van"
-                    />
-                  </Grid>
+                      </Grid>
 
-                  <Grid item xs={2}>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={checkState.rv}
-                          onChange={handleCheckChange}
-                          name="rv"
+                      <Grid item xs={2}>
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              checked={checkState.rv}
+                              onChange={handleCheckChange}
+                              name="rv"
+                            />
+                          }
+                          label="RV"
                         />
-                      }
-                      label="RV"
-                    />
-                  </Grid>
+                      </Grid>
 
-                  <Grid item xs={2}>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={checkState.suv}
-                          onChange={handleCheckChange}
-                          name="suv"
+                      <Grid item xs={2}>
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              checked={checkState.suv}
+                              onChange={handleCheckChange}
+                              name="suv"
+                            />
+                          }
+                          label="SUV"
                         />
-                      }
-                      label="SUV"
-                    />
-                  </Grid>
+                      </Grid>
 
-                  <Grid item xs={3}>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={checkState.convertible}
-                          onChange={handleCheckChange}
-                          name="convertible"
+                      <Grid item xs={3}>
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              checked={checkState.convertible}
+                              onChange={handleCheckChange}
+                              name="convertible"
+                            />
+                          }
+                          label="Convertible"
                         />
-                      }
-                      label="Convertible"
-                    />
-                  </Grid>
+                      </Grid>
 
-                  <Grid item xs={3}>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={checkState.petFriendly}
-                          onChange={handleCheckChange}
-                          name="petFriendly"
+                      <Grid item xs={3}>
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              checked={checkState.petFriendly}
+                              onChange={handleCheckChange}
+                              name="petFriendly"
+                            />
+                          }
+                          label="Pet Friendly"
                         />
-                      }
-                      label="Pet Friendly"
-                    />
-                  </Grid>
-                </FormGroup>
-              </FormControl>
-
+                      </Grid>
+                    </Grid>
+                  </FormGroup>
+                </FormControl>
+              </Grid>
               <Grid item xs={12}>
                 <TextField
                   id="rvehicle-description"
