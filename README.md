@@ -15,6 +15,20 @@ The Airbnb of the automotive world. Users can list their vehicles and towed trai
 
 This is a team project that I did with Hervinder Bhandal @https://github.com/hbhandal80 and Matthew Thompson @https://github.com/Thommati as part of my Final project at Lighthouse Labs.
 
+## Screenshots
+
+### Main page
+
+!["Main page"](https://github.com/Avivitw/carbnb/blob/main/react-client/docs/main_page.gif?raw=true)
+
+### Dashboards
+
+!["Dashboards"](https://github.com/Avivitw/carbnb/blob/main/react-client/docs/dashboards.gif?raw=true)
+
+### Details page
+
+!["Details page"](https://github.com/Avivitw/carbnb/blob/main/react-client/docs/Screen%20Shot%202021-08-09%20at%2010.42.58%20AM.png?raw=true)
+
 ## Stretch/Additional Features
 
 - Messaging system
