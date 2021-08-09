@@ -2,17 +2,43 @@
 
 ## Description
 
-The Airbnb of the automotive world.  Users can list their vehicles and towed trailers for rent, set availability, and rates.  Users can also choose to rent vehicles listed by other uses by browsing the vehicles available for rent for a given location and time frame.  Renters can review the vehicles and people they have rentded from, while those who rent their vehicles can review the people who rented from them.  Renters will also be able to filter available vehicles by date, location, price, type of vehicle, and from their favourites.  Payments will be made through Carbnb and the appropriate amount paid to vehicle owners.
+The Airbnb of the automotive world. Users can list their vehicles and towed trailers for rent, set availability, and rates. Users can also choose to rent vehicles listed by other users by browsing the vehicles available for rent for a given location and time frame. Renters can review the vehicles and people they have rentded from, while those who rent their vehicles can review the people who rented from them. Renters will also be able to filter available vehicles by date, location, price, type of vehicle, and from their favourites.
 
-There will be an administrative interface for Carbnb employees to perform administrative tasks such as featured vehicles and promotions, or to resolve technical issues with users.
+### Tech Stack
 
-Business consideration and legal issues will not be resolved (such as insurance, and financial capaility).
-
-## Target Audience
-
-The target audience will be travellers of all types as well as those looking to spend some time in a car they do not own.
+- React.js
+- Express
+- Node.js
+- PostgreSQL
 
 ## Team Members
-- Hervinder Bhandal
-- Matthew Thompson
-- Avivit Weissman
+
+This is a team project that I did with Hervinder Bhandal @https://github.com/hbhandal80 and Matthew Thompson @https://github.com/Thommati as part of my Final project at Lighthouse Labs.
+
+## Stretch/Additional Features
+
+- Messaging system
+
+## Getting Started
+
+1. Fork this repository, then clone your fork of this repository.
+2. Install dependencies using the npm install command in both `react-clinet` and `express-server`.
+3. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
+4. Create a database schema then run `npm run db:reset`.
+5. Start the web server using the `npm start` command. The server will be served at http://localhost:8080/ .
+6. Start the React client using the `npm start` command. The App will be served at http://localhost:3000/ .
+7. Go to http://localhost:3000/ in your browser.
+
+## Dependencies
+
+- axios
+- material-ui
+- jwt-decode
+- react-router-dom
+- node-sass
+
+- express
+- pg
+- bcrypt
+- dotenv
+- nodemon
