@@ -23,7 +23,7 @@ This is a team project that I did with Hervinder Bhandal @https://github.com/hbh
 
 ### Chat
 
-!["Chat"]()
+!["Chat"](https://github.com/Avivitw/carbnb/blob/main/react-client/docs/Chat.gif?raw=true)
 
 ### Dashboards
 
