@@ -21,6 +21,10 @@ This is a team project that I did with Hervinder Bhandal @https://github.com/hbh
 
 !["Main page"](https://github.com/Avivitw/carbnb/blob/main/react-client/docs/main_page.gif?raw=true)
 
+### Chat
+
+!["Chat"]()
+
 ### Dashboards
 
 !["Dashboards"](https://github.com/Avivitw/carbnb/blob/main/react-client/docs/dashboards.gif?raw=true)
