@@ -35,7 +35,7 @@ This is a team project that I did with Hervinder Bhandal @https://github.com/hbh
 
 ## Stretch/Additional Features
 
-- Messaging system
+- Messaging system (incl. realtime messaging with websocket)
 
 ## Getting Started
 
